@@ -8,6 +8,14 @@ file '/etc/ssh/ssh_known_hosts' do
   action :create
 end
 
+user 'vagrant' do
+    home '/home/vagrant'
+end
+
+directory '/home/vagrant/.ssh' do
+    recursive true
+end
+
 file '/home/vagrant/.ssh/known_hosts' do
   content "#{::TestData.dummy3_key}\n# this is a comment\n#{::TestData.dummy4_key}\n"
   action :create

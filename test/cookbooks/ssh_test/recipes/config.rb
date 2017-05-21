@@ -2,6 +2,14 @@
 
 include_recipe 'ssh'
 
+user 'vagrant' do
+    home '/home/vagrant'
+end
+
+directory '/home/vagrant/.ssh' do
+    recursive true
+end
+
 ssh_config 'github.com' do
   options 'User' => 'git', 'IdentityFile' => '/tmp/gh'
 end
