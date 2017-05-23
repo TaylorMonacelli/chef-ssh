@@ -9,11 +9,13 @@ file '/etc/ssh/ssh_known_hosts' do
 end
 
 user 'vagrant' do
-    home '/home/vagrant'
+  manage_home true
+  home '/home/vagrant'
+  action %i[create manage]
 end
 
 directory '/home/vagrant/.ssh' do
-    recursive true
+  mode 0o0700
 end
 
 file '/home/vagrant/.ssh/known_hosts' do

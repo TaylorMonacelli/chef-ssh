@@ -3,11 +3,13 @@
 include_recipe 'ssh'
 
 user 'vagrant' do
-    home '/home/vagrant'
+  manage_home true
+  home '/home/vagrant'
+  action %i[create manage]
 end
 
 directory '/home/vagrant/.ssh' do
-    recursive true
+  mode 0o0700
 end
 
 ssh_config 'github.com' do
